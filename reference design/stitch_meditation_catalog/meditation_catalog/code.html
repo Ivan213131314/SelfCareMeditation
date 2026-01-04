@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Meditation Catalog</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec80",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#102219",
+                        "card-light": "#ffffff",
+                        "card-dark": "#1c2e26",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }.fill-1 {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased transition-colors duration-200">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden pb-24">
+<div class="sticky top-0 z-20 flex items-center bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm p-4 pb-2 justify-between transition-colors duration-200">
+<div class="text-primary flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/10">
+<span class="material-symbols-outlined text-3xl">spa</span>
+</div>
+<div class="flex-1 px-4">
+<p class="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Good Morning</p>
+<h2 class="text-slate-900 dark:text-white text-xl font-bold leading-tight tracking-tight">Discover Peace</h2>
+</div>
+<div class="flex w-12 items-center justify-end">
+<button class="flex size-10 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-card-light dark:bg-card-dark shadow-sm border border-slate-100 dark:border-slate-800 transition-transform active:scale-95">
+<span class="material-symbols-outlined text-slate-900 dark:text-white">account_circle</span>
+</button>
+</div>
+</div>
+<div class="px-4 py-2 sticky top-[72px] z-10 bg-background-light dark:bg-background-dark transition-colors duration-200">
+<label class="flex flex-col h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full shadow-sm">
+<div class="text-slate-400 dark:text-slate-500 flex border-none bg-card-light dark:bg-card-dark items-center justify-center pl-4 rounded-l-xl border-r-0">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-slate-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border-none bg-card-light dark:bg-card-dark focus:border-none h-full placeholder:text-slate-400 dark:placeholder:text-slate-500 px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal transition-all" placeholder="Find your calm..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex gap-3 p-4 overflow-x-auto no-scrollbar">
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary px-6 shadow-sm transition-transform active:scale-95">
+<p class="text-slate-900 text-sm font-semibold leading-normal">All</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-card-light dark:bg-card-dark border border-slate-100 dark:border-slate-800 px-6 shadow-sm transition-transform active:scale-95">
+<p class="text-slate-600 dark:text-slate-300 text-sm font-medium leading-normal">Sleep</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-card-light dark:bg-card-dark border border-slate-100 dark:border-slate-800 px-6 shadow-sm transition-transform active:scale-95">
+<p class="text-slate-600 dark:text-slate-300 text-sm font-medium leading-normal">Focus</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-card-light dark:bg-card-dark border border-slate-100 dark:border-slate-800 px-6 shadow-sm transition-transform active:scale-95">
+<p class="text-slate-600 dark:text-slate-300 text-sm font-medium leading-normal">Anxiety</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-card-light dark:bg-card-dark border border-slate-100 dark:border-slate-800 px-6 shadow-sm transition-transform active:scale-95">
+<p class="text-slate-600 dark:text-slate-300 text-sm font-medium leading-normal">Nature</p>
+</button>
+</div>
+<div class="flex flex-col gap-4 px-4 pb-4">
+<div class="group relative flex flex-col md:flex-row items-stretch justify-between gap-4 rounded-2xl bg-card-light dark:bg-card-dark p-4 shadow-[0_2px_12px_rgba(0,0,0,0.04)] dark:shadow-none border border-transparent dark:border-slate-800 transition-all hover:shadow-md">
+<div class="flex flex-col justify-between gap-3 flex-[2]">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-amber-500 text-lg">wb_sunny</span>
+<span class="text-xs font-semibold text-amber-500 uppercase tracking-wide">Morning</span>
+</div>
+<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight">Morning Clarity</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-relaxed line-clamp-2">Start your day with intention and focus. Clear the fog before it settles.</p>
+</div>
+<button class="flex items-center justify-center w-fit overflow-hidden rounded-full h-9 px-5 bg-primary/20 hover:bg-primary/30 text-slate-900 gap-2 text-sm font-bold leading-normal transition-colors mt-2">
+<span class="material-symbols-outlined text-[20px]">play_circle</span>
+<span>Try this meditation</span>
+</button>
+</div>
+<div class="w-full md:w-32 h-32 md:h-auto shrink-0 bg-center bg-no-repeat bg-cover rounded-xl" data-alt="Soft morning sunrise gradient with orange and yellow hues" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAMQ3nDZefyCFZtKwchSvXhjvveoXbYka8CNNfsqcAvcYhH1tdWkK7dMsKuY4uMvkfuynZd_rwuORAlyRsIjhXsgmC99l5QVUtKCvLpcqxvBFBrq5t7ecifphVefrcOu36PagaLhtTMSmLPscK282ENgY3BvhBFuiR4HRo6o2P9VCMKbTjm8ah9dXxEhMk7DKds-L-p_MT8jz6puv74h3bHjKK_RhOxn42AqTGCRaFArqvUtMKKqrPTypH86AvOt8-C8eCq-NpSj-QB");'>
+</div>
+</div>
+<div class="group relative flex flex-col md:flex-row items-stretch justify-between gap-4 rounded-2xl bg-card-light dark:bg-card-dark p-4 shadow-[0_2px_12px_rgba(0,0,0,0.04)] dark:shadow-none border border-transparent dark:border-slate-800 transition-all hover:shadow-md">
+<div class="flex flex-col justify-between gap-3 flex-[2]">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-blue-400 text-lg">air</span>
+<span class="text-xs font-semibold text-blue-400 uppercase tracking-wide">Stress Relief</span>
+</div>
+<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight">Deep Breath</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-relaxed line-clamp-2">A 5-minute session to reset your nervous system when things get overwhelming.</p>
+</div>
+<button class="flex items-center justify-center w-fit overflow-hidden rounded-full h-9 px-5 bg-primary/20 hover:bg-primary/30 text-slate-900 gap-2 text-sm font-bold leading-normal transition-colors mt-2">
+<span class="material-symbols-outlined text-[20px]">play_circle</span>
+<span>Try this meditation</span>
+</button>
+</div>
+<div class="w-full md:w-32 h-32 md:h-auto shrink-0 bg-center bg-no-repeat bg-cover rounded-xl" data-alt="Calm blue sky with soft white clouds" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDayR9Wm2VVSTx2Zds18ftisBf9mQX2Wgy7bl5l8sSdqpy4i1CPAwd2GKidfCfU1iEJwfHSFVgTcInHzAv29yatqsNjM3cKAaxhIJ9Bcq0Czo2wYqSLxCoEjCA8ksUFyf1Y8_FV0EZlAXIH04BNDnG3iC4WXyuQOcFx3G2l99NHCPF8TqNZpU5FPMuDdVHKVGOFVJY90PLRZbXql-rAbs2_tE99qgUV9HUlBmfpiEBa3RSjySYkLpQR_1NJr6qsKE9dv7ABRmI3UZAA");'>
+</div>
+</div>
+<div class="group relative flex flex-col md:flex-row items-stretch justify-between gap-4 rounded-2xl bg-card-light dark:bg-card-dark p-4 shadow-[0_2px_12px_rgba(0,0,0,0.04)] dark:shadow-none border border-transparent dark:border-slate-800 transition-all hover:shadow-md">
+<div class="flex flex-col justify-between gap-3 flex-[2]">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-indigo-400 text-lg">bedtime</span>
+<span class="text-xs font-semibold text-indigo-400 uppercase tracking-wide">Sleep</span>
+</div>
+<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight">Drift Away</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-relaxed line-clamp-2">Prepare your mind for a deep, restorative sleep with soothing guidance.</p>
+</div>
+<button class="flex items-center justify-center w-fit overflow-hidden rounded-full h-9 px-5 bg-primary/20 hover:bg-primary/30 text-slate-900 gap-2 text-sm font-bold leading-normal transition-colors mt-2">
+<span class="material-symbols-outlined text-[20px]">play_circle</span>
+<span>Try this meditation</span>
+</button>
+</div>
+<div class="w-full md:w-32 h-32 md:h-auto shrink-0 bg-center bg-no-repeat bg-cover rounded-xl" data-alt="Dark blue night sky with stars" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBrC8IYtJjJFlz_vg3uhZh2DFpILiCXWXV87g6CB4IQ2LcYCWPDIYtJKhgl6XsLJ5KEQocnyPrIhXT1CKqAz_-JamwFK3R3OdlxrQoAkbbUHHr_4XFuxOjmdOYEri33kLM6PMeBKlCvVVuyhgD5E7dw1bTtjDZnSsKXXiB-2S1B-Plpxr-89bGuuWrcL-O4hFkg0iluIgq2uc038egl-uNKIDJZ-9kdYyP4IEZGxK0NnVXnvSGMzVSvAkQrszh6BS-QpVTNTaXyODA1");'>
+</div>
+</div>
+<div class="group relative flex flex-col md:flex-row items-stretch justify-between gap-4 rounded-2xl bg-card-light dark:bg-card-dark p-4 shadow-[0_2px_12px_rgba(0,0,0,0.04)] dark:shadow-none border border-transparent dark:border-slate-800 transition-all hover:shadow-md">
+<div class="flex flex-col justify-between gap-3 flex-[2]">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary text-lg">forest</span>
+<span class="text-xs font-semibold text-primary uppercase tracking-wide">Nature</span>
+</div>
+<h3 class="text-slate-900 dark:text-white text-lg font-bold leading-tight">Forest Bathing</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-relaxed line-clamp-2">Immerse yourself in the sounds of the deep woods for grounding.</p>
+</div>
+<button class="flex items-center justify-center w-fit overflow-hidden rounded-full h-9 px-5 bg-primary/20 hover:bg-primary/30 text-slate-900 gap-2 text-sm font-bold leading-normal transition-colors mt-2">
+<span class="material-symbols-outlined text-[20px]">play_circle</span>
+<span>Try this meditation</span>
+</button>
+</div>
+<div class="w-full md:w-32 h-32 md:h-auto shrink-0 bg-center bg-no-repeat bg-cover rounded-xl" data-alt="Green lush forest with sunlight filtering through trees" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBApgx6g_Llu8BpqbOUvHMau_UGBWpDeJ3-Ao3juuHHYFbZql4LC_p3TUhQgGhXhk4MF0oZy-KK1wpeQJUaTZy5BWUJAPizDVEh_0n6BmBgGQMr-VeO_noynvnmLzx2yXUi97V1nwunRBOb0e-lR1XI5bVWRmbTaa2inS9TIVWxpq7pZp6bR2HN431PNyTizfa2mYy-76VzjhJgmCYJ1daYcU9Owho-Z3jFXOZrFKuaKDEKmFVklN2hyT36Nc0o1qRkOVTBQJVKmE50");'>
+</div>
+</div>
+</div>
+</div>
+<div class="fixed bottom-0 left-0 right-0 h-20 bg-card-light dark:bg-card-dark border-t border-slate-100 dark:border-slate-800 flex justify-around items-center px-6 pb-2 z-30">
+<button class="flex flex-col items-center gap-1 p-2 text-primary">
+<span class="material-symbols-outlined text-2xl fill-1">spa</span>
+<span class="text-[10px] font-medium">Catalog</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-2 text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-colors">
+<span class="material-symbols-outlined text-2xl">self_improvement</span>
+<span class="text-[10px] font-medium">Meditation</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-2 text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-colors">
+<span class="material-symbols-outlined text-2xl">edit_note</span>
+<span class="text-[10px] font-medium">Diary</span>
+</button>
+</div>
+
+</body></html>

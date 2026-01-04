@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Post-Meditation Journal</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec80",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#102219",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>.no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }.no-scrollbar {
+            -ms-overflow-style: none;scrollbar-width: none;}
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white transition-colors duration-200">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden pb-32">
+<header class="sticky top-0 z-20 flex items-center justify-between bg-background-light/90 dark:bg-background-dark/90 px-4 py-4 backdrop-blur-md">
+<button class="flex h-10 w-10 items-center justify-center rounded-full text-slate-500 hover:bg-slate-100 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Reflection</h2>
+<button class="flex h-10 px-4 items-center justify-center rounded-full text-primary font-semibold text-sm hover:bg-primary/10 transition-colors">
+            Save
+        </button>
+</header>
+<main class="flex-1 flex flex-col pt-2 px-4">
+<div class="flex-1 flex flex-col gap-3 pb-4">
+<label class="sr-only" for="journal-input">Journal</label>
+<div class="relative flex-1 flex flex-col group">
+<textarea class="flex-1 w-full min-w-0 resize-none rounded-2xl border-none bg-white dark:bg-white/5 text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-primary/50 p-4 pb-48 text-xl font-normal leading-relaxed shadow-sm min-h-[50vh] flex-grow transition-shadow" id="journal-input" placeholder="What came up for you today? Let your thoughts flow freely, like ink on a blank page."></textarea>
+<div class="absolute bottom-4 left-4 right-4 flex flex-col gap-3 z-10">
+<div class="absolute bottom-[-16px] left-[-16px] right-[-16px] h-32 bg-gradient-to-t from-white via-white/80 to-transparent dark:from-[#172b21] dark:via-[#172b21]/80 pointer-events-none rounded-b-2xl"></div>
+<div class="relative z-20 flex flex-col gap-3">
+<div class="flex flex-row items-center justify-start gap-3 overflow-x-auto no-scrollbar p-1 pb-0 -mx-1">
+<div class="group/mood flex flex-col items-center justify-center gap-1 min-w-[50px] cursor-pointer">
+<div class="w-8 h-8 bg-primary/20 dark:bg-primary/10 rounded-full flex items-center justify-center text-xl ring-1 ring-primary ring-offset-1 ring-offset-white dark:ring-offset-background-dark transition-all">
+                                    😌
+                                </div>
+<p class="text-primary font-semibold text-xs leading-normal opacity-0 group-focus-within/mood:opacity-100 group-hover/mood:opacity-100 transition-opacity absolute bottom-full mb-1 bg-white dark:bg-slate-800 px-2 py-0.5 rounded shadow-sm">Calm</p>
+</div>
+<div class="group/mood flex flex-col items-center justify-center gap-1 min-w-[50px] cursor-pointer opacity-70 hover:opacity-100 transition-opacity">
+<div class="w-8 h-8 bg-white dark:bg-white/5 rounded-full flex items-center justify-center text-xl border border-slate-100 dark:border-white/10 shadow-sm transition-transform group-hover/mood:scale-105">
+                                    🙂
+                                </div>
+</div>
+<div class="group/mood flex flex-col items-center justify-center gap-1 min-w-[50px] cursor-pointer opacity-70 hover:opacity-100 transition-opacity">
+<div class="w-8 h-8 bg-white dark:bg-white/5 rounded-full flex items-center justify-center text-xl border border-slate-100 dark:border-white/10 shadow-sm transition-transform group-hover/mood:scale-105">
+                                    😐
+                                </div>
+</div>
+<div class="group/mood flex flex-col items-center justify-center gap-1 min-w-[50px] cursor-pointer opacity-70 hover:opacity-100 transition-opacity">
+<div class="w-8 h-8 bg-white dark:bg-white/5 rounded-full flex items-center justify-center text-xl border border-slate-100 dark:border-white/10 shadow-sm transition-transform group-hover/mood:scale-105">
+                                    😔
+                                </div>
+</div>
+<div class="group/mood flex flex-col items-center justify-center gap-1 min-w-[50px] cursor-pointer opacity-70 hover:opacity-100 transition-opacity">
+<div class="w-8 h-8 bg-white dark:bg-white/5 rounded-full flex items-center justify-center text-xl border border-slate-100 dark:border-white/10 shadow-sm transition-transform group-hover/mood:scale-105">
+                                    😫
+                                </div>
+</div>
+</div>
+<div class="flex flex-wrap gap-2">
+<div class="flex h-7 cursor-pointer shrink-0 items-center justify-center gap-x-1 rounded-full bg-primary px-3 shadow-sm transition-colors text-xs">
+<span class="material-symbols-outlined text-[14px] text-background-dark">check</span>
+<p class="text-background-dark font-semibold leading-normal">Focus</p>
+</div>
+<div class="flex h-7 cursor-pointer shrink-0 items-center justify-center gap-x-1 rounded-full bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 transition-colors hover:bg-slate-50 dark:hover:bg-white/10 text-xs">
+<p class="text-slate-700 dark:text-slate-200 font-medium leading-normal">Clarity</p>
+</div>
+<div class="flex h-7 cursor-pointer shrink-0 items-center justify-center gap-x-1 rounded-full bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 transition-colors hover:bg-slate-50 dark:hover:bg-white/10 text-xs">
+<p class="text-slate-700 dark:text-slate-200 font-medium leading-normal">Gratitude</p>
+</div>
+<div class="flex h-7 cursor-pointer shrink-0 items-center justify-center gap-x-1 rounded-full bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 transition-colors hover:bg-slate-50 dark:hover:bg-white/10 text-xs">
+<p class="text-slate-700 dark:text-slate-200 font-medium leading-normal">Deep Breathing</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-3 pt-4">
+<div class="flex items-center justify-between">
+<label class="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide">Recent Entries</label>
+<button class="text-primary text-sm font-medium">View all</button>
+</div>
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-4 bg-white dark:bg-white/5 p-3 rounded-2xl shadow-sm border border-transparent hover:border-primary/20 transition-colors">
+<div class="w-10 h-10 rounded-full bg-slate-50 dark:bg-white/10 flex items-center justify-center text-xl">
+                        🙂
+                    </div>
+<div class="flex-1 flex flex-col">
+<span class="text-sm font-semibold text-slate-900 dark:text-white">Happy</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">Yesterday, 9:00 AM</span>
+</div>
+<span class="material-symbols-outlined text-slate-300">chevron_right</span>
+</div>
+<div class="flex items-center gap-4 bg-white dark:bg-white/5 p-3 rounded-2xl shadow-sm border border-transparent hover:border-primary/20 transition-colors">
+<div class="w-10 h-10 rounded-full bg-slate-50 dark:bg-white/10 flex items-center justify-center text-xl">
+                        😫
+                    </div>
+<div class="flex-1 flex flex-col">
+<span class="text-sm font-semibold text-slate-900 dark:text-white">Stressed</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">Mon, 12 Oct</span>
+</div>
+<span class="material-symbols-outlined text-slate-300">chevron_right</span>
+</div>
+</div>
+</div>
+</main>
+<nav class="fixed bottom-0 left-0 right-0 z-50 bg-white/90 dark:bg-background-dark/95 backdrop-blur-xl border-t border-slate-200/50 dark:border-white/5 pt-3 pb-8 px-6 flex justify-around items-end shadow-[0_-8px_30px_rgba(0,0,0,0.04)] dark:shadow-none transition-all">
+<a class="flex flex-col items-center gap-1.5 flex-1 text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[26px] group-hover:-translate-y-0.5 transition-transform duration-300">spa</span>
+<span class="text-[10px] font-medium tracking-wide">Catalog</span>
+</a>
+<a class="flex flex-col items-center gap-1.5 flex-1 text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[26px] group-hover:-translate-y-0.5 transition-transform duration-300">self_improvement</span>
+<span class="text-[10px] font-medium tracking-wide">Meditation</span>
+</a>
+<a class="flex flex-col items-center gap-1.5 flex-1 text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined text-[26px] group-hover:-translate-y-0.5 transition-transform duration-300" style="font-variation-settings: 'FILL' 1;">edit_note</span>
+<span class="text-[10px] font-medium tracking-wide">Diary</span>
+</a>
+</nav>
+</div>
+</body></html>
