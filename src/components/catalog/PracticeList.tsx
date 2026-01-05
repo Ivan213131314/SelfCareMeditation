@@ -1,22 +1,26 @@
 import React from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
-import { Practice } from '@/types/models';
+import { FlatList, StyleSheet, View, StyleProp, ViewStyle } from 'react-native';
+import { Practice, Category } from '@/types/models';
 import { PracticeCard } from './PracticeCard';
 import { EmptyState } from '../common/EmptyState';
 import { Loading } from '../common/Loading';
 
 interface PracticeListProps {
     practices: Practice[];
+    categories?: Category[];
     loading: boolean;
     onPracticePress: (id: string) => void;
     ListHeaderComponent?: React.ReactElement;
+    contentContainerStyle?: StyleProp<ViewStyle>;
 }
 
 export const PracticeList: React.FC<PracticeListProps> = ({
     practices,
+    categories = [],
     loading,
     onPracticePress,
-    ListHeaderComponent
+    ListHeaderComponent,
+    contentContainerStyle
 }) => {
     if (loading && practices.length === 0) {
         return (
@@ -26,6 +30,8 @@ export const PracticeList: React.FC<PracticeListProps> = ({
         );
     }
 
+    const getCategory = (id: string) => categories.find(c => c.id === id);
+
     return (
         <FlatList
             data={practices}
@@ -33,16 +39,17 @@ export const PracticeList: React.FC<PracticeListProps> = ({
             renderItem={({ item }) => (
                 <PracticeCard
                     practice={item}
+                    category={getCategory(item.category_id)}
                     onPress={onPracticePress}
                 />
             )}
-            contentContainerStyle={styles.listContent}
+            contentContainerStyle={[styles.listContent, contentContainerStyle]}
             ListHeaderComponent={ListHeaderComponent}
             ListEmptyComponent={
                 <View style={styles.emptyContainer}>
                     <EmptyState
                         message="В этой категории пока нет практик"
-                        icon="🍃"
+                        emoji="🍃"
                     />
                 </View>
             }

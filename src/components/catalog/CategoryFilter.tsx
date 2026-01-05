@@ -23,14 +23,15 @@ export const CategoryFilter: React.FC<CategoryFilterProps> = ({
             <TouchableOpacity
                 style={[
                     styles.chip,
-                    selectedId === null && styles.activeChip
+                    selectedId === null ? styles.activeChip : styles.inactiveChip
                 ]}
                 onPress={() => onSelect(null)}
+                activeOpacity={0.7}
             >
                 <Text style={[
                     styles.text,
-                    selectedId === null && styles.activeText
-                ]}>Все</Text>
+                    selectedId === null ? styles.activeText : styles.inactiveText
+                ]}>All</Text>
             </TouchableOpacity>
 
             {categories.map((category) => (
@@ -38,15 +39,16 @@ export const CategoryFilter: React.FC<CategoryFilterProps> = ({
                     key={category.id}
                     style={[
                         styles.chip,
-                        selectedId === category.id && styles.activeChip
+                        selectedId === category.id ? styles.activeChip : styles.inactiveChip
                     ]}
                     onPress={() => onSelect(category.id)}
+                    activeOpacity={0.7}
                 >
                     <Text style={[
                         styles.text,
-                        selectedId === category.id && styles.activeText
+                        selectedId === category.id ? styles.activeText : styles.inactiveText
                     ]}>
-                        {category.icon} {category.name}
+                        {category.name}
                     </Text>
                 </TouchableOpacity>
             ))}
@@ -61,24 +63,35 @@ const styles = StyleSheet.create({
         gap: 8,
     },
     chip: {
-        paddingHorizontal: 16,
-        paddingVertical: 8,
-        borderRadius: 20,
-        backgroundColor: Colors.card,
-        borderWidth: 1,
-        borderColor: Colors.border,
+        paddingHorizontal: 24,
+        paddingVertical: 10,
+        borderRadius: 999,
         marginRight: 8,
+        minWidth: 64,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     activeChip: {
         backgroundColor: Colors.primary,
-        borderColor: Colors.primary,
+        shadowColor: Colors.primary,
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.2,
+        shadowRadius: 8,
+        elevation: 4,
+    },
+    inactiveChip: {
+        backgroundColor: Colors.white,
+        borderWidth: 1,
+        borderColor: '#E2E8F0', // Light border
     },
     text: {
-        fontSize: 14,
-        color: Colors.textSecondary,
-        fontWeight: '500',
+        fontSize: 15,
+        fontWeight: '600',
     },
     activeText: {
         color: '#FFFFFF',
+    },
+    inactiveText: {
+        color: Colors.textSecondary,
     },
 });

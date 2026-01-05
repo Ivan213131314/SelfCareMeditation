@@ -1,10 +1,12 @@
 import React from 'react';
-import { View, Text, StyleSheet, SafeAreaView, StatusBar, Platform } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, StatusBar, Platform, Image, TouchableOpacity } from 'react-native';
 import { useRouter } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
 import { useCatalog } from '@/hooks/useCatalog';
 import { CategoryFilter } from '@/components/catalog/CategoryFilter';
 import { PracticeList } from '@/components/catalog/PracticeList';
 import { Colors } from '@/constants/colors';
+import { Input } from '@/components/common/Input';
 
 export default function CatalogScreen() {
     const router = useRouter();
@@ -17,12 +19,7 @@ export default function CatalogScreen() {
     } = useCatalog();
 
     const handlePracticePress = (id: string) => {
-        // Navigate to meditation tab/screen
-        // passing params might require updating the route structure or using a global store/context
-        // For now, we will navigate to the meditation tab. 
-        // Ideally, this should open a specific meditation session.
         router.push('/(tabs)/meditation');
-        // TODO: Pass practice ID to meditation screen via params or global store
         console.log('Selected practice:', id);
     };
 
@@ -30,7 +27,22 @@ export default function CatalogScreen() {
         <SafeAreaView style={styles.safeArea}>
             <View style={styles.container}>
                 <View style={styles.header}>
-                    <Text style={styles.title}>Практики</Text>
+                    <View>
+                        <Text style={styles.greeting}>GOOD MORNING</Text>
+                        <Text style={styles.title}>Discover Peace</Text>
+                    </View>
+                    <TouchableOpacity style={styles.profileButton}>
+                        <Ionicons name="person-circle-outline" size={40} color={Colors.text} />
+                    </TouchableOpacity>
+                </View>
+
+                <View style={styles.searchContainer}>
+                    <Input
+                        placeholder="Find your calm..."
+                        leftIcon={<Ionicons name="search-outline" size={20} color={Colors.textSecondary} />}
+                        containerStyle={styles.searchInputContainer}
+                        inputStyle={styles.searchInput}
+                    />
                 </View>
 
                 <View style={styles.filterContainer}>
@@ -43,9 +55,11 @@ export default function CatalogScreen() {
 
                 <PracticeList
                     practices={practices}
+                    categories={categories}
                     loading={loading}
                     onPracticePress={handlePracticePress}
                     ListHeaderComponent={<View style={{ height: 8 }} />}
+                    contentContainerStyle={styles.listContent}
                 />
             </View>
         </SafeAreaView>
@@ -63,17 +77,59 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.background,
     },
     header: {
-        paddingHorizontal: 16,
-        paddingTop: 16,
-        paddingBottom: 8,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingHorizontal: 20,
+        paddingTop: 20,
+        paddingBottom: 16,
+    },
+    greeting: {
+        fontSize: 12,
+        fontWeight: '600',
+        color: Colors.textSecondary,
+        marginBottom: 4,
+        letterSpacing: 1,
+        textTransform: 'uppercase',
     },
     title: {
-        fontSize: 28,
+        fontSize: 24,
         fontWeight: '700',
         color: Colors.text,
-        letterSpacing: 0.3,
+        letterSpacing: -0.5,
+    },
+    profileButton: {
+        padding: 4,
+        backgroundColor: Colors.white,
+        borderRadius: 999,
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
+        elevation: 2,
+    },
+    searchContainer: {
+        paddingHorizontal: 20,
+        marginBottom: 16,
+    },
+    searchInputContainer: {
+        marginBottom: 0,
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.05,
+        shadowRadius: 8,
+        elevation: 2,
+    },
+    searchInput: {
+        backgroundColor: Colors.white,
+        borderWidth: 0,
+        height: 52,
+        fontSize: 16,
     },
     filterContainer: {
-        marginBottom: 8,
+        marginBottom: 16,
+    },
+    listContent: {
+        paddingBottom: 20,
     },
 });
