@@ -57,12 +57,18 @@ export const Button: React.FC<ButtonProps> = ({
 const styles = StyleSheet.create({
     button: {
         backgroundColor: Colors.primary,
-        paddingVertical: 14,
-        paddingHorizontal: 24,
-        borderRadius: 12,
+        paddingVertical: 16, // Slightly taller
+        paddingHorizontal: 32,
+        borderRadius: 9999, // Pill shape
         alignItems: 'center',
         justifyContent: 'center',
         minWidth: 120,
+        // Default shadow for depth
+        shadowColor: Colors.primary,
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.2,
+        shadowRadius: 8,
+        elevation: 4,
     },
     secondaryButton: {
         backgroundColor: Colors.primaryLight,

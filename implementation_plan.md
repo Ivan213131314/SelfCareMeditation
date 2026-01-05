@@ -152,13 +152,13 @@ flowchart LR
   - Поля email и password
   - Кнопка "Войти"
   - Ссылка на регистрацию
-  - [x] Стилизовать строго по референсу: [screen.png](file:///e:/Anigravity/Apps/SelfCareMeditation/reference%20design/stitch_meditation_catalog/email_registration/screen.png) и [code.html](file:///e:/Anigravity/Apps/SelfCareMeditation/reference%20design/stitch_meditation_catalog/email_registration/code.html)
+  - [x] Стилизовать строго по референсу: [screen.png](file:///e:/Anigravity/Apps/SelfCareMeditation/reference%20design/stitch_meditation_catalog/email_registration/screen.png)
   > ✅ Реализовано: экран входа с валидацией, декоративные блобы, карточка лого, градиенты
 - [x] Создать `app/auth/register.tsx`:
   - Поля email и password
   - Кнопка "Зарегистрироваться"
   - Ссылка на вход
-  - [x] Стилизовать строго по референсу: [screen.png](file:///e:/Anigravity/Apps/SelfCareMeditation/reference%20design/stitch_meditation_catalog/email_registration/screen.png) и [code.html](file:///e:/Anigravity/Apps/SelfCareMeditation/reference%20design/stitch_meditation_catalog/email_registration/code.html)
+  - [x] 
   > ✅ Реализовано: экран регистрации с подтверждением пароля, аналогично дизайну входа
 
 ### 2.5 Защита маршрутов

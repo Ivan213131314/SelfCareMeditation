@@ -7,12 +7,16 @@ import {
     KeyboardAvoidingView,
     Platform,
     ScrollView,
+    Dimensions,
 } from 'react-native';
 import { router } from 'expo-router';
+import { MaterialIcons } from '@expo/vector-icons';
 import { Input } from '@/components/common/Input';
 import { Button } from '@/components/common/Button';
 import { Colors } from '@/constants/colors';
 import { useAuth } from '@/hooks/useAuth';
+
+const { width } = Dimensions.get('window');
 
 export default function LoginScreen() {
     const [email, setEmail] = useState('');
@@ -75,11 +79,10 @@ export default function LoginScreen() {
             style={styles.container}
             behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         >
-            {/* Декоративные фоновые элементы */}
+            {/* Background Glows */}
             <View style={styles.backgroundDecor}>
-                <View style={styles.blob1} />
-                <View style={styles.blob2} />
-                <View style={styles.blob3} />
+                <View style={styles.glowTop} />
+                <View style={styles.glowCenter} />
             </View>
 
             <ScrollView
@@ -87,66 +90,72 @@ export default function LoginScreen() {
                 keyboardShouldPersistTaps="handled"
                 showsVerticalScrollIndicator={false}
             >
-                {/* Лого */}
-                <View style={styles.logoContainer}>
-                    <View style={styles.logoBox}>
-                        <Text style={styles.logoIcon}>🧘</Text>
-                    </View>
-                </View>
-
-                {/* Заголовок */}
-                <View style={styles.headerContainer}>
-                    <Text style={styles.title}>С возвращением</Text>
-                    <Text style={styles.subtitle}>
-                        Войдите, чтобы продолжить свой путь к гармонии
-                    </Text>
-                </View>
-
-                {/* Форма */}
-                <View style={styles.formContainer}>
-                    <Input
-                        label="Email"
-                        placeholder="name@example.com"
-                        value={email}
-                        onChangeText={(text) => {
-                            setEmail(text);
-                            if (emailError) validateEmail(text);
-                        }}
-                        error={emailError}
-                        keyboardType="email-address"
-                        autoCapitalize="none"
-                        autoCorrect={false}
-                    />
-
-                    <Input
-                        label="Пароль"
-                        placeholder="Ваш пароль"
-                        value={password}
-                        onChangeText={(text) => {
-                            setPassword(text);
-                            if (passwordError) validatePassword(text);
-                        }}
-                        error={passwordError}
-                        secureTextEntry
-                    />
-
-                    {error && (
-                        <View style={styles.errorContainer}>
-                            <Text style={styles.errorText}>{error}</Text>
+                <View style={styles.contentContainer}>
+                    {/* Header Section */}
+                    <View style={styles.headerSection}>
+                        <View style={styles.iconContainer}>
+                            <MaterialIcons name="spa" size={40} color={Colors.primary} />
                         </View>
-                    )}
+                        <Text style={styles.title}>Find your calm</Text>
+                        <Text style={styles.subtitle}>
+                            Enter your email to save your progress and personalize your journey.
+                        </Text>
+                    </View>
 
-                    <Button
-                        title="Войти"
-                        onPress={handleLogin}
-                        loading={isLoading}
-                        style={styles.loginButton}
-                    />
+                    {/* Form Section */}
+                    <View style={styles.formContainer}>
+                        <Input
+                            label="Email address"
+                            placeholder="name@example.com"
+                            value={email}
+                            onChangeText={(text) => {
+                                setEmail(text);
+                                if (emailError) validateEmail(text);
+                            }}
+                            error={emailError}
+                            keyboardType="email-address"
+                            autoCapitalize="none"
+                            autoCorrect={false}
+                            rightIcon={
+                                <MaterialIcons name="mail-outline" size={20} color={Colors.textSecondary} />
+                            }
+                        />
 
-                    <View style={styles.registerContainer}>
-                        <Text style={styles.registerText}>Нет аккаунта? </Text>
-                        <TouchableOpacity onPress={navigateToRegister}>
-                            <Text style={styles.registerLink}>Зарегистрироваться</Text>
+                        <Input
+                            label="Password"
+                            placeholder="Your password"
+                            value={password}
+                            onChangeText={(text) => {
+                                setPassword(text);
+                                if (passwordError) validatePassword(text);
+                            }}
+                            error={passwordError}
+                            secureTextEntry
+                            rightIcon={
+                                <MaterialIcons name="lock-outline" size={20} color={Colors.textSecondary} />
+                            }
+                        />
+
+                        {error && (
+                            <View style={styles.errorContainer}>
+                                <Text style={styles.errorText}>{error}</Text>
+                            </View>
+                        )}
+
+                        <Button
+                            title="Continue"
+                            onPress={handleLogin}
+                            loading={isLoading}
+                            style={styles.loginButton}
+                        />
+
+                        <TouchableOpacity
+                            onPress={navigateToRegister}
+                            style={styles.registerLinkContainer}
+                        >
+                            <Text style={styles.registerText}>
+                                No account? <Text style={styles.registerLink}>Sign up</Text>
+                            </Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -154,8 +163,7 @@ export default function LoginScreen() {
                 {/* Footer */}
                 <View style={styles.footer}>
                     <Text style={styles.footerText}>
-                        Мы заботимся о вашем спокойствии.{' '}
-                        <Text style={styles.footerLink}>Политика конфиденциальности</Text>
+                        We respect your peace. <Text style={styles.footerLink}>Privacy Policy</Text>
                     </Text>
                 </View>
             </ScrollView>
@@ -166,91 +174,82 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: Colors.background,
+        backgroundColor: '#F6F8F7', // background-light from reference
     },
     backgroundDecor: {
         ...StyleSheet.absoluteFillObject,
         overflow: 'hidden',
     },
-    blob1: {
+    glowTop: {
         position: 'absolute',
-        top: -100,
-        right: -100,
-        width: 300,
-        height: 300,
-        borderRadius: 150,
-        backgroundColor: 'rgba(19, 236, 128, 0.1)',
+        top: -width * 0.5,
+        left: -width * 0.2,
+        width: width * 1.5,
+        height: width * 1.5,
+        borderRadius: 9999,
+        backgroundColor: 'rgba(19, 236, 128, 0.03)', // Very subtle primary
     },
-    blob2: {
+    glowCenter: {
         position: 'absolute',
-        top: '40%',
-        left: -80,
-        width: 250,
-        height: 250,
-        borderRadius: 125,
-        backgroundColor: 'rgba(96, 165, 250, 0.08)',
-    },
-    blob3: {
-        position: 'absolute',
-        bottom: 0,
-        right: 0,
-        width: 200,
-        height: 200,
-        borderRadius: 100,
+        top: '30%',
+        left: '10%',
+        width: width * 0.8,
+        height: width * 0.8,
+        borderRadius: 9999,
         backgroundColor: 'rgba(19, 236, 128, 0.05)',
+        transform: [{ scale: 1.2 }],
     },
     scrollContent: {
         flexGrow: 1,
+        justifyContent: 'space-between',
         paddingHorizontal: 24,
-        paddingTop: 60,
         paddingBottom: 24,
     },
-    logoContainer: {
-        alignItems: 'center',
-        marginBottom: 32,
+    contentContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        paddingTop: 60,
     },
-    logoBox: {
+    headerSection: {
+        alignItems: 'center',
+        marginBottom: 40,
+    },
+    iconContainer: {
         width: 80,
         height: 80,
-        borderRadius: 20,
+        borderRadius: 28, // Squircle-ish
         backgroundColor: Colors.white,
         justifyContent: 'center',
         alignItems: 'center',
+        marginBottom: 24,
         shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 8,
-        elevation: 3,
-    },
-    logoIcon: {
-        fontSize: 40,
-    },
-    headerContainer: {
-        alignItems: 'center',
-        marginBottom: 32,
-        paddingHorizontal: 16,
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.05,
+        shadowRadius: 12,
+        elevation: 2,
     },
     title: {
         fontSize: 32,
         fontWeight: '700',
-        color: Colors.text,
+        color: '#111814',
         marginBottom: 12,
         textAlign: 'center',
+        letterSpacing: -0.5,
     },
     subtitle: {
         fontSize: 16,
-        color: Colors.textSecondary,
+        color: '#64748B', // slate-500
         textAlign: 'center',
         lineHeight: 24,
+        paddingHorizontal: 16,
     },
     formContainer: {
-        flex: 1,
-        paddingHorizontal: 8,
+        width: '100%',
     },
     errorContainer: {
         backgroundColor: 'rgba(239, 68, 68, 0.1)',
         padding: 12,
-        borderRadius: 8,
+        borderRadius: 12,
         marginBottom: 16,
     },
     errorText: {
@@ -261,22 +260,24 @@ const styles = StyleSheet.create({
     loginButton: {
         marginTop: 8,
         height: 56,
-        borderRadius: 28,
+        // Shadow is handled in Button.tsx for primary variant
+        shadowColor: 'rgba(19, 236, 128, 0.5)',
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 1,
+        shadowRadius: 10,
+        elevation: 10,
     },
-    registerContainer: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
+    registerLinkContainer: {
         marginTop: 24,
+        alignItems: 'center',
     },
     registerText: {
         fontSize: 14,
         color: Colors.textSecondary,
     },
     registerLink: {
-        fontSize: 14,
-        color: Colors.primary,
         fontWeight: '600',
+        color: Colors.primary,
     },
     footer: {
         paddingTop: 24,
@@ -284,7 +285,7 @@ const styles = StyleSheet.create({
     },
     footerText: {
         fontSize: 12,
-        color: Colors.textMuted,
+        color: '#94A3B8', // slate-400
         textAlign: 'center',
     },
     footerLink: {
