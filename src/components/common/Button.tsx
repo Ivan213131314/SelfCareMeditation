@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
         minWidth: 120,
     },
     secondaryButton: {
-        backgroundColor: Colors.secondary,
+        backgroundColor: Colors.primaryLight,
     },
     outlineButton: {
         backgroundColor: 'transparent',

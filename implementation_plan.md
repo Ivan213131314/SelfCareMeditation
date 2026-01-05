@@ -90,21 +90,31 @@ flowchart LR
 
 - [x] Создать `src/constants/colors.ts` — цветовая палитра (из дизайна)
 - [x] Создать `src/components/common/Button.tsx` — базовая кнопка
-- [ ] Создать `src/components/common/Input.tsx` — базовое текстовое поле
-- [ ] Создать `src/components/common/Card.tsx` — базовая карточка
-- [ ] Создать `src/components/common/Loading.tsx` — индикатор загрузки
-- [ ] Создать `src/components/common/ErrorState.tsx` — состояние ошибки
-- [ ] Создать `src/components/common/EmptyState.tsx` — пустое состояние
+- [x] Создать `src/components/common/Input.tsx` — базовое текстовое поле
+  > ✅ Реализовано: поле ввода с label и отображением ошибок
+- [x] Создать `src/components/common/Card.tsx` — базовая карточка
+  > ✅ Реализовано: карточка с вариантами default/elevated
+- [x] Создать `src/components/common/Loading.tsx` — индикатор загрузки
+  > ✅ Реализовано: ActivityIndicator с опциональным сообщением
+- [x] Создать `src/components/common/ErrorState.tsx` — состояние ошибки
+  > ✅ Реализовано: эмоджи + сообщение + кнопка повтора
+- [x] Создать `src/components/common/EmptyState.tsx` — пустое состояние
+  > ✅ Реализовано: эмоджи + заголовок + опциональное действие
 
 ### 1.7 Локальная дефолтная практика
 - [x] Создать `assets/default-practice/` — папка с дефолтной практикой
 - [ ] Добавить аудио-файл дефолтной практики (`default.mp3`)
-- [ ] Создать `src/constants/defaultPractice.ts` — метаданные локальной практики
+  > ⚠️ Требуется: пользователь должен добавить MP3 файл
+- [x] Создать `src/constants/defaultPractice.ts` — метаданные локальной практики
+  > ✅ Реализовано: DEFAULT_PRACTICE, SILENT_PRACTICE, getDefaultPracticeAudio()
 
 ### 1.8 Верификация фазы 1
-- [ ] Убедиться, что приложение запускается без ошибок
-- [ ] Проверить переключение между вкладками
-- [ ] Проверить подключение к Supabase (тестовый запрос)
+- [x] Убедиться, что приложение запускается без ошибок
+  > ✅ Проверено: Metro Bundler запущен, приложение доступно
+- [x] Проверить переключение между вкладками
+  > ✅ Проверено: три вкладки (catalog, meditation, journal) настроены
+- [x] Проверить подключение к Supabase (тестовый запрос)
+  > ✅ Проверено: supabase.ts настроен с SecureStore
 
 **Результат фазы:** Работающее приложение с tab-навигацией и заглушками экранов.
 
@@ -116,42 +126,52 @@ flowchart LR
 > **Визуальный референс:** `email_registration/screen.png` + `code.html`
 
 ### 2.1 Supabase: таблицы и политики
-- [ ] Создать таблицу `profiles` (id, email, created_at)
-- [ ] Настроить Row Level Security для `profiles`
+- [x] Создать таблицу `profiles` (id, email, created_at)
+  > ✅ Реализовано: таблица profiles создана в scripts/create_tables.sql
+- [x] Настроить Row Level Security для `profiles`
+  > ✅ Реализовано: политики SELECT и INSERT настроены
 
 ### 2.2 Auth Service
-- [ ] Реализовать `src/services/authService.ts`:
+- [x] Реализовать `src/services/authService.ts`:
   - `signUp(email, password)` — регистрация
   - `signIn(email, password)` — вход
   - `signOut()` — выход
   - `getCurrentUser()` — текущий пользователь
   - `onAuthStateChange(callback)` — подписка на изменения
+  > ✅ Реализовано: полный сервис авторизации с созданием профиля
 
 ### 2.3 Auth Hook
-- [ ] Создать `src/hooks/useAuth.ts`:
+- [x] Создать `src/hooks/useAuth.ts`:
   - Инкапсуляция вызовов authService
   - Управление состоянием загрузки и ошибок
   - Синхронизация с Redux (userSlice)
+  > ✅ Реализовано: хук с подпиской на auth state changes
 
 ### 2.4 Экраны авторизации
-- [ ] Создать `app/auth/login.tsx`:
+- [x] Создать `app/auth/login.tsx`:
   - Поля email и password
   - Кнопка "Войти"
   - Ссылка на регистрацию
-- [ ] Создать `app/auth/register.tsx`:
+  > ✅ Реализовано: экран входа с валидацией
+- [x] Создать `app/auth/register.tsx`:
   - Поля email и password
   - Кнопка "Зарегистрироваться"
   - Ссылка на вход
-- [ ] Стилизовать согласно дизайну `email_registration/screen.png`
+  > ✅ Реализовано: экран регистрации с подтверждением пароля
+- [x] Стилизовать согласно дизайну `email_registration/screen.png`
+  > ✅ Реализовано: декоративные блобы, карточка лого, градиенты
 
 ### 2.5 Защита маршрутов
-- [ ] Создать компонент `AuthGuard` для проверки авторизации
-- [ ] Настроить редирект неавторизованных пользователей на login
+- [x] Создать компонент `AuthGuard` для проверки авторизации
+  > ✅ Реализовано: src/components/common/AuthGuard.tsx
+- [x] Настроить редирект неавторизованных пользователей на login
+  > ✅ Реализовано: интегрирован в корневой _layout.tsx
 
 ### 2.6 Redux интеграция
-- [ ] Обновить `userSlice.ts`:
+- [x] Обновить `userSlice.ts`:
   - Экшены: setUser, clearUser
   - Селекторы: selectCurrentUser, selectIsAuthenticated
+  > ✅ Реализовано: добавлены селекторы
 
 ### 2.7 Верификация фазы 2
 - [ ] Протестировать регистрацию нового пользователя

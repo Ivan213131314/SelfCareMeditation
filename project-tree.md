@@ -1,74 +1,106 @@
 # Структура проекта
 
-Этот документ описывает ТЕКУЩУЮ файловую структуру проекта и ПЛАНИРУЕМУЮ архитектуру.
-Он может и должен обновляться по мере развития проекта.
+Этот документ описывает ТЕКУЩУЮ файловую структуру проекта.
+Он обновляется по мере развития проекта.
+
 ---
 
 ## Связь модулей и структуры
 
-| Модуль | Спецификация | Экран (План) | Сервис (План) | Компоненты (План) | Хук (План) |
-|--------|--------------|--------------|---------------|-------------------|------------|
-| **Catalog** | [specs/catalog.md](specs/catalog.md) | `app/(tabs)/catalog.tsx` | `catalogService.ts` | `src/components/catalog/` | `useCatalog.ts` |
-| **Meditation** | [specs/meditation.md](specs/meditation.md) | `app/(tabs)/meditation.tsx` | `meditationService.ts` | `src/components/meditation/` | — |
-| **Journal** | [specs/journal.md](specs/journal.md) | `app/(tabs)/journal.tsx` | `journalService.ts` | `src/components/journal/` | `useJournal.ts` |
+| Модуль | Спецификация | Экран | Сервис | Компоненты | Хук |
+|--------|--------------|-------|--------|------------|-----|
+| **Catalog** | [specs/catalog.md](specs/catalog.md) | `src/app/(tabs)/catalog.tsx` | `catalogService.ts` | `src/components/catalog/` | `useCatalog.ts` |
+| **Meditation** | [specs/meditation.md](specs/meditation.md) | `src/app/(tabs)/meditation.tsx` | `meditationService.ts` | `src/components/meditation/` | — |
+| **Journal** | [specs/journal.md](specs/journal.md) | `src/app/(tabs)/journal.tsx` | `journalService.ts` | `src/components/journal/` | `useJournal.ts` |
 | **Auth** | [specs/auth.md](specs/auth.md) | — | `authService.ts` | — | `useAuth.ts` |
 
 ---
 
-## Текущая структура (Документация и ресурсы)
+## Текущая структура проекта
 
 ```
 SelfCareMeditation/
 │
-├── specs/                        # Спецификации модулей (Markdown)
-│   ├── auth.md                   # Модуль: Аутентификация
-│   ├── catalog.md                # Модуль: Каталог практик
-│   ├── journal.md                # Модуль: Дневник самочувствия
-│   └── meditation.md             # Модуль: Медитация
+├── .agent/                           # Конфигурация агента
 │
-├── reference design/             # Дизайн-референсы и ассеты
+├── assets/                           # Статические ресурсы (корневой уровень)
+│   ├── default-practice/             # Практики по умолчанию
+│   └── generated_practices/          # Сгенерированные практики
+│
+├── docs/                             # Документация
+│   └── SUPABASE_SETUP.md             # Инструкция по настройке Supabase
+│
+├── reference design/                 # Дизайн-референсы
 │   └── stitch_meditation_catalog/
 │
-├── specification.md              # Верхнеуровневая спецификация проекта
-├── architecture.md               # Архитектурная спецификация
-├── project-tree.md               # Этот документ
-├── implementation_plan.md        # Текущий план реализации проекта
-└── ... (конфигурационные файлы)
-```
-
-## Целевая структура приложения (React Native + Expo)
-
-```
-SelfCareMeditation/
+├── scripts/                          # Скрипты для разработки
+│   ├── create_tables.sql             # SQL-скрипт создания таблиц
+│   └── seed.ts                       # TypeScript-скрипт для сидинга БД
 │
-├── app/                          # Expo Router — экраны и навигация
-│   ├── (tabs)/                   # Tab-навигация (3 вкладки)
-│   │   ├── _layout.tsx           # Конфигурация таб-бара
-│   │   ├── catalog.tsx           # Экран: Каталог
-│   │   ├── meditation.tsx        # Экран: Медитация
-│   │   └── journal.tsx           # Экран: Дневник
-│   ├── _layout.tsx               # Корневой layout приложения
-│   └── index.tsx                 # Точка входа / редирект
+├── specs/                            # Спецификации модулей
+│   ├── auth.md                       # Модуль: Аутентификация
+│   ├── catalog.md                    # Модуль: Каталог практик
+│   ├── journal.md                    # Модуль: Дневник самочувствия
+│   └── meditation.md                 # Модуль: Медитация
 │
-├── src/
-│   ├── components/               # UI-компоненты
-│   │   ├── common/               # Переиспользуемые элементы
-│   │   ├── catalog/
-│   │   ├── meditation/
-│   │   └── journal/
+├── src/                              # Исходный код приложения
 │   │
-│   ├── services/                 # Сервисный слой (логика, API)
-│   │   ├── supabase.ts           # Клиент базы данных
-│   │   ├── authService.ts
-│   │   ├── catalogService.ts
-│   │   ├── meditationService.ts
-│   │   └── journalService.ts
+│   ├── app/                          # Expo Router — экраны и навигация
+│   │   ├── (tabs)/                   # Tab-навигация (3 вкладки)
+│   │   │   ├── _layout.tsx           # Конфигурация таб-бара
+│   │   │   ├── catalog.tsx           # Экран: Каталог
+│   │   │   ├── meditation.tsx        # Экран: Медитация
+│   │   │   └── journal.tsx           # Экран: Дневник
+│   │   ├── auth/                     # Экраны авторизации
+│   │   │   ├── _layout.tsx           # Layout для auth-экранов
+│   │   │   ├── login.tsx             # Экран: Вход
+│   │   │   └── register.tsx          # Экран: Регистрация
+│   │   └── _layout.tsx               # Корневой layout приложения
 │   │
-│   ├── store/                    # Управление состоянием (Store)
-│   ├── hooks/                    # Кастомные хуки
-│   ├── types/                    # TypeScript определения типов
-│   ├── constants/                # Константы (цвета, строки)
-│   └── utils/                    # Вспомогательные функции
+│   ├── assets/                       # Ресурсы внутри src (пустая)
+│   │
+│   ├── components/                   # UI-компоненты
+│   │   ├── common/                   # Переиспользуемые элементы
+│   │   │   ├── AuthGuard.tsx         # Защита маршрутов авторизации
+│   │   │   ├── Button.tsx            # Кнопка
+│   │   │   ├── Card.tsx              # Карточка
+│   │   │   ├── EmptyState.tsx        # Пустое состояние
+│   │   │   ├── ErrorState.tsx        # Состояние ошибки
+│   │   │   ├── Input.tsx             # Поле ввода
+│   │   │   └── Loading.tsx           # Индикатор загрузки
+│   │   ├── catalog/                  # Компоненты каталога (пустая)
+│   │   ├── meditation/               # Компоненты медитации (пустая)
+│   │   └── journal/                  # Компоненты дневника (пустая)
+│   │
+│   ├── constants/                    # Константы приложения
+│   │   ├── colors.ts                 # Цветовая палитра
+│   │   └── defaultPractice.ts        # Дефолтная практика
+│   │
+│   ├── hooks/                        # Кастомные хуки
+│   │   └── useAuth.ts                # Хук авторизации
+│   │
+│   ├── services/                     # Сервисный слой
+│   │   ├── authService.ts            # Сервис авторизации
+│   │   └── supabase.ts               # Клиент Supabase
+│   │
+│   ├── store/                        # Управление состоянием (Redux)
+│   │   ├── index.ts                  # Конфигурация store
+│   │   └── slices/                   # Redux slices
+│   │       ├── sessionSlice.ts       # Slice для сессии медитации
+│   │       └── userSlice.ts          # Slice для пользователя
+│   │
+│   ├── types/                        # TypeScript типы (пустая)
+│   │
+│   └── utils/                        # Утилиты (пустая)
 │
-├── assets/                       # Статические ресурсы (картинки, аудио)
+├── .env                              # Переменные окружения
+├── .env.example                      # Пример переменных окружения
+├── .gitignore                        # Git ignore
+├── app.json                          # Конфигурация Expo
+├── package.json                      # Зависимости Node.js
+├── tsconfig.json                     # Конфигурация TypeScript
+├── specification.md                  # Спецификация проекта
+├── architecture.md                   # Архитектурная спецификация
+├── implementation_plan.md            # План реализации
+└── project-tree.md                   # Этот документ
 ```

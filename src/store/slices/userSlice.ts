@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RootState } from '../index';
 
 interface UserState {
     id: string | null;
@@ -30,4 +31,14 @@ const userSlice = createSlice({
 });
 
 export const { setUser, clearUser } = userSlice.actions;
+
+// Селекторы
+export const selectCurrentUser = (state: RootState) => ({
+    id: state.user.id,
+    email: state.user.email,
+});
+
+export const selectIsAuthenticated = (state: RootState) => state.user.isAuthenticated;
+
 export default userSlice.reducer;
+

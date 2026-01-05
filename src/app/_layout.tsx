@@ -4,6 +4,7 @@ import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { Provider } from 'react-redux';
 import { store } from '../store';
+import { AuthGuard } from '@/components/common/AuthGuard';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -24,10 +25,13 @@ export default function RootLayout() {
 
     return (
         <Provider store={store}>
-            <Stack>
-                <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-                <Stack.Screen name="auth" options={{ headerShown: false }} />
-            </Stack>
+            <AuthGuard>
+                <Stack screenOptions={{ headerShown: false }}>
+                    <Stack.Screen name="(tabs)" />
+                    <Stack.Screen name="auth" />
+                </Stack>
+            </AuthGuard>
         </Provider>
     );
 }
+
