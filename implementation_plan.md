@@ -152,14 +152,14 @@ flowchart LR
   - Поля email и password
   - Кнопка "Войти"
   - Ссылка на регистрацию
-  > ✅ Реализовано: экран входа с валидацией
+  - [x] Стилизовать строго по референсу: [screen.png](file:///e:/Anigravity/Apps/SelfCareMeditation/reference%20design/stitch_meditation_catalog/email_registration/screen.png) и [code.html](file:///e:/Anigravity/Apps/SelfCareMeditation/reference%20design/stitch_meditation_catalog/email_registration/code.html)
+  > ✅ Реализовано: экран входа с валидацией, декоративные блобы, карточка лого, градиенты
 - [x] Создать `app/auth/register.tsx`:
   - Поля email и password
   - Кнопка "Зарегистрироваться"
   - Ссылка на вход
-  > ✅ Реализовано: экран регистрации с подтверждением пароля
-- [x] Стилизовать согласно дизайну `email_registration/screen.png`
-  > ✅ Реализовано: декоративные блобы, карточка лого, градиенты
+  - [x] Стилизовать строго по референсу: [screen.png](file:///e:/Anigravity/Apps/SelfCareMeditation/reference%20design/stitch_meditation_catalog/email_registration/screen.png) и [code.html](file:///e:/Anigravity/Apps/SelfCareMeditation/reference%20design/stitch_meditation_catalog/email_registration/code.html)
+  > ✅ Реализовано: экран регистрации с подтверждением пароля, аналогично дизайну входа
 
 ### 2.5 Защита маршрутов
 - [x] Создать компонент `AuthGuard` для проверки авторизации
@@ -232,7 +232,7 @@ flowchart LR
   - Фильтр категорий
   - Список практик
   - Обработка нажатия на карточку → переход к медитации
-- [ ] Стилизовать согласно `meditation_catalog/screen.png`
+  - **Верстка:** строго по референсу [screen.png](file:///e:/Anigravity/Apps/SelfCareMeditation/reference%20design/stitch_meditation_catalog/meditation_catalog/screen.png) и [code.html](file:///e:/Anigravity/Apps/SelfCareMeditation/reference%20design/stitch_meditation_catalog/meditation_catalog/code.html)
 
 ### 3.7 Верификация фазы 3
 - [ ] Проверить загрузку списка практик из Supabase
@@ -290,7 +290,7 @@ flowchart LR
   - Кнопка Play/Pause
   - Кнопка завершения
   - Переход к дневнику после завершения
-- [ ] Стилизовать согласно `active_meditation_session/screen.png`
+  - **Верстка:** строго по референсу [screen.png](file:///e:/Anigravity/Apps/SelfCareMeditation/reference%20design/stitch_meditation_catalog/active_meditation_session/screen.png) и [code.html](file:///e:/Anigravity/Apps/SelfCareMeditation/reference%20design/stitch_meditation_catalog/active_meditation_session/code.html)
 
 ### 4.6 Верификация фазы 4
 - [ ] Проверить воспроизведение дефолтной практики без выбора
@@ -355,7 +355,7 @@ flowchart LR
   - Режим списка (по умолчанию): история записей
   - Режим создания: форма новой записи
   - Режим просмотра: детали записи
-- [ ] Стилизовать согласно `post-meditation_journal/screen.png`
+  - **Верстка:** строго по референсу [screen.png](file:///e:/Anigravity/Apps/SelfCareMeditation/reference%20design/stitch_meditation_catalog/post-meditation_journal/screen.png) и [code.html](file:///e:/Anigravity/Apps/SelfCareMeditation/reference%20design/stitch_meditation_catalog/post-meditation_journal/code.html)
 
 ### 5.8 Верификация фазы 5
 - [ ] Проверить создание новой записи
