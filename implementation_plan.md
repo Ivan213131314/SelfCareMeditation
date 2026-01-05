@@ -55,12 +55,20 @@ flowchart LR
 - [x] Настроить `tsconfig.json` с path aliases (`@/components`, `@/services` и т.д.)
 
 ### 1.3 Supabase проект и клиент
-- [ ] Создать проект в Supabase Dashboard
-- [ ] Получить SUPABASE_URL и SUPABASE_ANON_KEY
+- [x] Создать проект в Supabase Dashboard
+  > ✅ Реализовано: Проект SelfCareMeditation создан (ID: ocjqlyajyrrlbsrynspd)
+- [x] Получить SUPABASE_URL и SUPABASE_ANON_KEY
+  > ✅ Реализовано: Ключи получены и добавлены в .env файл
 - [x] Создать `.env` с переменными окружения (`.env.example` создан)
+  > ✅ Реализовано: Файл .env.example обновлен с URL проекта и инструкциями
 - [x] Настроить `src/services/supabase.ts` — инициализация клиента
+  > ✅ Реализовано: Клиент Supabase с SecureStore уже настроен
 - [x] Настроить Expo SecureStore для хранения токенов
-- [ ] Создать `scripts/seed.ts` — скрипт для начального заполнения БД
+  > ✅ Реализовано: ExpoSecureStoreAdapter интегрирован в supabase.ts
+- [x] Создать `scripts/seed.ts` — скрипт для начального заполнения БД
+  > ✅ Реализовано: Скрипт создан с категориями и практиками для тестирования
+- [x] Создать документацию по настройке Supabase
+  > ✅ Реализовано: Создан docs/SUPABASE_SETUP.md с полными инструкциями
 
 ### 1.4 Навигация
 - [x] Настроить `app/_layout.tsx` — корневой layout
