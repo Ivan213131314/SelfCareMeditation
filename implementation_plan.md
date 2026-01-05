@@ -186,53 +186,61 @@ flowchart LR
 ## Фаза 3: Модуль Catalog
 
 > **Цель:** Реализовать каталог практик с фильтрацией.
-> **Визуальный референс:** `meditation_catalog/screen.png` + `code.html`
+> **Визуальный референс:** `meditation_catalog/screen.png`
 
 ### 3.1 Supabase: таблицы и Storage
-- [ ] Создать таблицу `practices`:
+- [x] Создать таблицу `practices`:
   - id, title, description, duration, category_id, image_url, audio_url
-- [ ] Создать таблицу `categories`:
+- [x] Создать таблицу `categories`:
   - id, name, icon
-- [ ] Создать bucket `practice-audio` в Supabase Storage
-- [ ] Создать bucket `practice-images` в Supabase Storage
-- [ ] Настроить RLS для публичного чтения buckets
-- [ ] Запустить `scripts/seed.ts` — заполнить тестовыми данными (3-5 практик, 2-3 категории)
+- [x] Создать bucket `practice-audio` в Supabase Storage
+- [x] Создать bucket `practice-images` в Supabase Storage
+- [x] Настроить RLS для публичного чтения buckets
+- [x] Запустить `scripts/seed.ts` — заполнить тестовыми данными (3-5 практик, 2-3 категории)
+  > ✅ Реализовано: Выполнено вручную пользователем
 
 ### 3.2 Catalog Service
-- [ ] Реализовать `src/services/catalogService.ts`:
+- [x] Реализовать `src/services/catalogService.ts`  :
   - `getPractices()` — список практик
   - `getPracticeById(id)` — детали практики
   - `getCategories()` — список категорий
   - `getPracticesByCategory(categoryId)` — фильтрация
+  > ✅ Реализовано: базовый сервис для выборки данных из Supabase
 
 ### 3.3 Типы данных
-- [ ] Добавить в `src/types/models.ts`:
+- [x] Добавить в `src/types/models.ts`:
   - `Practice` interface
   - `Category` interface
+  > ✅ Реализовано: интерфейсы добавлены
 
 ### 3.4 Catalog Hook
-- [ ] Создать `src/hooks/useCatalog.ts`:
+- [x] Создать `src/hooks/useCatalog.ts`:
   - Загрузка списка практик
   - Фильтрация по категории
   - Кеширование данных
+  > ✅ Реализовано: хук управляет состоянием загрузки и фильтрацией
 
 ### 3.5 UI компоненты каталога
-- [ ] Создать `src/components/catalog/PracticeCard.tsx`:
+- [x] Создать `src/components/catalog/PracticeCard.tsx` :
   - Изображение, название, длительность
-  - Стилизация по дизайну
-- [ ] Создать `src/components/catalog/CategoryFilter.tsx`:
+  - Стилизация по дизайну 
+  > ✅ Реализовано: карточка с поддержкой изображений и заглушек
+- [x] Создать `src/components/catalog/CategoryFilter.tsx`:
   - Горизонтальный скролл категорий
   - Визуальное выделение активной
-- [ ] Создать `src/components/catalog/PracticeList.tsx`:
+  > ✅ Реализовано: фильтр с горизонтальной прокруткой и стилями
+- [x] Создать `src/components/catalog/PracticeList.tsx`:
   - FlatList с карточками практик
+  > ✅ Реализовано: список практик с pull-to-refresh
 
 ### 3.6 Экран каталога
-- [ ] Реализовать `app/(tabs)/catalog.tsx`:
+- [x] Реализовать `app/(tabs)/catalog.tsx`:
   - Заголовок "Практики"
   - Фильтр категорий
   - Список практик
   - Обработка нажатия на карточку → переход к медитации
-  - **Верстка:** строго по референсу [screen.png](file:///e:/Anigravity/Apps/SelfCareMeditation/reference%20design/stitch_meditation_catalog/meditation_catalog/screen.png) и [code.html](file:///e:/Anigravity/Apps/SelfCareMeditation/reference%20design/stitch_meditation_catalog/meditation_catalog/code.html)
+  - **Верстка:** строго по референсу [screen.png](file:///e:/Anigravity/Apps/SelfCareMeditation/reference%20design/stitch_meditation_catalog/meditation_catalog/screen.png) 
+  > ✅ Реализовано: экран собран из компонентов, подключен к хуку, категории и практики подгружаются из Supabase 
 
 ### 3.7 Верификация фазы 3
 - [ ] Проверить загрузку списка практик из Supabase
