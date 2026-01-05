@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { Image } from 'expo-image';
 import { Ionicons } from '@expo/vector-icons';
 import { Practice, Category } from '@/types/models';
 import { Colors } from '@/constants/colors';
@@ -45,9 +46,10 @@ export const PracticeCard: React.FC<PracticeCardProps> = ({ practice, category, 
                 <View style={styles.visualContainer}>
                     {practice.image_url ? (
                         <Image
-                            source={{ uri: practice.image_url }}
+                            source={practice.image_url}
                             style={styles.image}
-                            resizeMode="cover"
+                            contentFit="cover"
+                            transition={500}
                         />
                     ) : (
                         <View style={[styles.image, styles.placeholder]} />

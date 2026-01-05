@@ -16,6 +16,7 @@ export default function CatalogScreen() {
         loading,
         selectedCategoryId,
         filterByCategory,
+        refresh,
     } = useCatalog();
 
     const handlePracticePress = (id: string) => {
@@ -58,6 +59,8 @@ export default function CatalogScreen() {
                     categories={categories}
                     loading={loading}
                     onPracticePress={handlePracticePress}
+                    onRefresh={refresh}
+                    refreshing={loading}
                     ListHeaderComponent={<View style={{ height: 8 }} />}
                     contentContainerStyle={styles.listContent}
                 />

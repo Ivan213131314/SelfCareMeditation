@@ -3,7 +3,8 @@ import { useEffect } from 'react';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { Provider } from 'react-redux';
-import { store } from '../store';
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from '../store';
 import { AuthGuard } from '@/components/common/AuthGuard';
 
 SplashScreen.preventAutoHideAsync();
@@ -25,12 +26,14 @@ export default function RootLayout() {
 
     return (
         <Provider store={store}>
-            <AuthGuard>
-                <Stack screenOptions={{ headerShown: false }}>
-                    <Stack.Screen name="(tabs)" />
-                    <Stack.Screen name="auth" />
-                </Stack>
-            </AuthGuard>
+            <PersistGate loading={null} persistor={persistor}>
+                <AuthGuard>
+                    <Stack screenOptions={{ headerShown: false }}>
+                        <Stack.Screen name="(tabs)" />
+                        <Stack.Screen name="auth" />
+                    </Stack>
+                </AuthGuard>
+            </PersistGate>
         </Provider>
     );
 }

@@ -12,6 +12,8 @@ interface PracticeListProps {
     onPracticePress: (id: string) => void;
     ListHeaderComponent?: React.ReactElement;
     contentContainerStyle?: StyleProp<ViewStyle>;
+    onRefresh?: () => void;
+    refreshing?: boolean;
 }
 
 export const PracticeList: React.FC<PracticeListProps> = ({
@@ -20,7 +22,9 @@ export const PracticeList: React.FC<PracticeListProps> = ({
     loading,
     onPracticePress,
     ListHeaderComponent,
-    contentContainerStyle
+    contentContainerStyle,
+    onRefresh,
+    refreshing = false
 }) => {
     if (loading && practices.length === 0) {
         return (
@@ -45,6 +49,8 @@ export const PracticeList: React.FC<PracticeListProps> = ({
             )}
             contentContainerStyle={[styles.listContent, contentContainerStyle]}
             ListHeaderComponent={ListHeaderComponent}
+            onRefresh={onRefresh}
+            refreshing={refreshing}
             ListEmptyComponent={
                 <View style={styles.emptyContainer}>
                     <EmptyState
