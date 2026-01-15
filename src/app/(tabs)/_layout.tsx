@@ -12,21 +12,21 @@ export default function TabLayout() {
                 name="catalog"
                 options={{
                     title: 'Каталог',
-                    tabBarIcon: ({ color }) => <Ionicons name="apps-outline" size={24} color={color} />,
+                    tabBarIcon: ({ color, focused }) => <Ionicons name={focused ? "apps" : "apps-outline"} size={24} color={color} />,
                 }}
             />
             <Tabs.Screen
                 name="meditation"
                 options={{
                     title: 'Медитация',
-                    tabBarIcon: ({ color }) => <Ionicons name="leaf-outline" size={24} color={color} />,
+                    tabBarIcon: ({ color, focused }) => <Ionicons name={focused ? "leaf" : "leaf-outline"} size={24} color={color} />,
                 }}
             />
             <Tabs.Screen
                 name="journal"
                 options={{
                     title: 'Дневник',
-                    tabBarIcon: ({ color }) => <Ionicons name="book-outline" size={24} color={color} />,
+                    tabBarIcon: ({ color, focused }) => <Ionicons name={focused ? "book" : "book-outline"} size={24} color={color} />,
                 }}
             />
         </Tabs>

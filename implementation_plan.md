@@ -1,35 +1,46 @@
-# Implementation Plan - Profile Screen and Logout
+# Установка медитации по умолчанию и кеширование выбора
 
-We need to add a profile screen where the user can view their account information (email) and log out of the application.
+## Описание цели
+В настоящее время экран медитации загружает жестко заданную дефолтную практику, если конкретная практика не выбрана. Цель состоит в том, чтобы изменить это поведение:
+1.  Использовать **первую медитацию** из каталога по умолчанию, если конкретная практика не выбрана и нет истории.
+2.  **Кешировать** последнюю выбранную медитацию, чтобы при возврате на экран восстанавливался выбор предыдущей сессии.
 
-## User Review Required
-None
+## Требуется проверка пользователя
+Нет.
 
-## Proposed Changes
+## Предлагаемые изменения
 
-### Navigation
-#### [MODIFY] [catalog.tsx](file:///e:/Anigravity/Apps/SelfCareMeditation/src/app/(tabs)/catalog.tsx)
-- Add `onPress` handler to the profile icon in the header.
-- Navigate to `/profile`.
+### Сервисы (Services)
+#### [MODIFY] [meditationService.ts](file:///e:/Anigravity/Apps/SelfCareMeditation/src/services/meditationService.ts)
+- Импортировать `AsyncStorage` из `@react-native-async-storage/async-storage`.
+- Определить константу ключа хранилища (например, `LAST_PRACTICE_ID_KEY`).
+- Обновить метод `startSession(practiceId)`:
+    - Если `practiceId` предоставлен:
+        - Сохранить его в `AsyncStorage`.
+        - Продолжить загрузку.
+    - Если `practiceId` НЕ предоставлен (null/undefined):
+        - Проверить `AsyncStorage` на наличие сохраненного ID.
+        - Если сохраненный ID существует, попытаться загрузить эту практику.
+        - Если загрузка успешна, использовать её.
+        - Если загрузка не удалась (или нет сохраненного ID), запросить **все практики** из `catalogService`.
+        - Выбрать **первую практику** из списка.
+        - Если практика найдена, сохранить её ID в `AsyncStorage` и использовать.
+        - Резервный вариант (Fallback): Использовать существующую жестко заданную дефолтную практику, если каталог пуст.
 
-### Screens
-#### [NEW] [profile.tsx](file:///e:/Anigravity/Apps/SelfCareMeditation/src/app/profile.tsx)
-- Create a new screen `ProfileScreen`.
-- Use `useAuth` hook to get `email` and `signOut` function.
-- Display "Профиль" title.
-- Display User Email.
-- Add "Выйти" button using `Button` component.
-- Handle logout: call `signOut`.
+## План проверки
 
-## Verification Plan
+### Ручная проверка
+1.  **Начальное состояние (Чистая установка/Очистка данных)**:
+    - Открыть приложение.
+    - Перейти на вкладку Медитация (не выбирая из каталога).
+    - **Проверить**: Загружается первая медитация из каталога (проверить название).
 
-### Manual Verification
-1.  **Open App**: Ensure you are logged in.
-2.  **Navigate to Profile**: Click the profile icon in the top right corner of the Catalog screen.
-3.  **Verify UI**: 
-    - Check if the "Профиль" screen opens.
-    - Check if the correct email is displayed.
-4.  **Logout**: Click the "Выйти" button.
-5.  **Verify Logout**: 
-    - Check if the app redirects to the Login/Welcome screen.
-    - Try to restart the app and verify you are still logged out.
+2.  **Выбор и кеширование**:
+    - Перейти в Каталог.
+    - Выбрать *другую* медитацию (например, 2-ю или 3-ю).
+    - Дождаться запуска (откроется экран Медитации).
+    - Закрыть приложение или уйти с вкладки и вернуться напрямую на вкладку Медитация (через нижнее меню).
+    - **Проверить**: Снова загружается выбранная медитация.
+
+3.  **Резервный вариант (Fallback)**:
+    - (Опционально/Проверка кода) Убедиться, что если каталог пуст, приложение не падает и загружает хардкодный дефолт.

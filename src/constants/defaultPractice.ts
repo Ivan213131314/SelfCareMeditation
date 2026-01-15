@@ -44,8 +44,8 @@ export function getDefaultPracticeAudio(): number | null {
     try {
         // Примечание: require должен быть статическим
         // Когда аудиофайл будет добавлен, раскомментировать:
-        // return require('../../../assets/default-practice/default.mp3');
-        return null;
+        return require('../../assets/default-practice/default.mp3');
+        // return null;
     } catch {
         return null;
     }
