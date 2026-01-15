@@ -316,54 +316,67 @@ flowchart LR
 > **Визуальный референс:** `post-meditation_journal/screen.png` + `code.html`
 
 ### 5.1 Supabase: таблица записей
-- [ ] Создать таблицу `journal_entries`:
+- [x] Создать таблицу `journal_entries`:
   - id, user_id, emoji, shortcuts, text, practice_id (optional), created_at
-- [ ] Настроить Row Level Security (пользователь видит только свои записи)
+  > ✅ Реализовано: таблица создана в SQL скрипте
+- [x] Настроить Row Level Security (пользователь видит только свои записи)
+  > ✅ Реализовано: RLS политики настроены
 
 ### 5.2 Константы
-- [ ] Создать `src/constants/emojis.ts`:
+- [x] Создать `src/constants/emojis.ts`:
   - Массив доступных эмоджи для настроения
-- [ ] Создать `src/constants/shortcuts.ts`:
+  > ✅ Реализовано: список эмоджи с лейблами
+- [x] Создать `src/constants/shortcuts.ts`:
   - Массив шорткат-ответов
+  > ✅ Реализовано: список тегов (Focus, Clarity, etc.)
 
 ### 5.3 Journal Service
-- [ ] Реализовать `src/services/journalService.ts`:
+- [x] Реализовать `src/services/journalService.ts`:
   - `createEntry(data)` — создание записи
   - `getEntries()` — список записей пользователя
   - `getEntryById(id)` — детали записи
   - `updateEntry(id, data)` — редактирование
   - `deleteEntry(id)` — удаление
+  > ✅ Реализовано: полный CRUD сервис
 
 ### 5.4 Типы данных
-- [ ] Добавить в `src/types/models.ts`:
+- [x] Добавить в `src/types/models.ts`:
   - `JournalEntry` interface
   - `CreateJournalEntryDTO` interface
+  > ✅ Реализовано: типы добавлены
 
 ### 5.5 Journal Hook
-- [ ] Создать `src/hooks/useJournal.ts`:
+- [x] Создать `src/hooks/useJournal.ts`:
   - CRUD операции через journalService
   - Управление состоянием загрузки
+  > ✅ Реализовано: хук useJournal
 
 ### 5.6 UI компоненты дневника
-- [ ] Создать `src/components/journal/EmojiPicker.tsx`:
+- [x] Создать `src/components/journal/EmojiPicker.tsx`:
   - Сетка эмоджи
   - Выделение выбранного
-- [ ] Создать `src/components/journal/ShortcutChips.tsx`:
+  > ✅ Реализовано
+- [x] Создать `src/components/journal/ShortcutChips.tsx`:
   - Горизонтальный список шорткатов
   - Мульти-выбор
-- [ ] Создать `src/components/journal/EntryCard.tsx`:
+  > ✅ Реализовано
+- [x] Создать `src/components/journal/EntryCard.tsx`:
   - Карточка записи с эмоджи и датой
-- [ ] Создать `src/components/journal/EntryList.tsx`:
+  > ✅ Реализовано
+- [x] Создать `src/components/journal/EntryList.tsx`:
   - Список всех записей
-- [ ] Создать `src/components/journal/EntryForm.tsx`:
+  > ✅ Реализовано: интегрировано в JournalScreen через FlatList
+- [x] Создать `src/components/journal/EntryForm.tsx`:
   - Форма создания/редактирования записи
+  > ✅ Реализовано: интегрировано в JournalScreen (renderHeader)
 
 ### 5.7 Экран дневника
-- [ ] Реализовать `app/(tabs)/journal.tsx`:
+- [x] Реализовать `app/(tabs)/journal.tsx`:
   - Режим списка (по умолчанию): история записей
   - Режим создания: форма новой записи
   - Режим просмотра: детали записи
   - **Верстка:** строго по референсу [screen.png](file:///e:/Anigravity/Apps/SelfCareMeditation/reference%20design/stitch_meditation_catalog/post-meditation_journal/screen.png) и [code.html](file:///e:/Anigravity/Apps/SelfCareMeditation/reference%20design/stitch_meditation_catalog/post-meditation_journal/code.html)
+  > ✅ Реализовано: экран собран, включает форму и список
 
 ### 5.8 Верификация фазы 5
 - [ ] Проверить создание новой записи

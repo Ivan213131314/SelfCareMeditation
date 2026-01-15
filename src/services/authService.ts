@@ -30,20 +30,8 @@ export const authService = {
             return { user: null, error: error.message };
         }
 
-        // Создаём профиль пользователя после регистрации
-        if (data.user) {
-            const { error: profileError } = await supabase
-                .from('profiles')
-                .insert({
-                    id: data.user.id,
-                    email: data.user.email,
-                });
-
-            if (profileError) {
-                console.error('Ошибка создания профиля:', profileError);
-                // Не возвращаем ошибку, т.к. пользователь уже создан
-            }
-        }
+        // Профиль теперь создается автоматически через Database Trigger (scripts/fix_profiles.sql)
+        // Поэтому ручное создание на клиенте больше не требуется.
 
         return { user: data.user, error: null };
     },
