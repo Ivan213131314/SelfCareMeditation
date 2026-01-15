@@ -258,7 +258,7 @@ flowchart LR
 > **Визуальный референс:** `active_meditation_session/screen.png` + `code.html`
 
 ### 4.1 Meditation Service
-- [ ] Реализовать `src/services/meditationService.ts`:
+- [x] Реализовать `src/services/meditationService.ts`:
   - `startSession(practiceId)` — запуск сессии
   - `pauseSession()` — пауза
   - `resumeSession()` — продолжение
@@ -266,31 +266,31 @@ flowchart LR
   - `getSessionProgress()` — текущий прогресс
 
 ### 4.2 Audio плеер
-- [ ] Установить `expo-av` для воспроизведения аудио
-- [ ] Реализовать управление аудио в meditationService:
+- [x] Установить `expo-av` для воспроизведения аудио
+- [x] Реализовать управление аудио в meditationService:
   - Загрузка аудио файла
   - Play/Pause/Stop
   - Отслеживание позиции воспроизведения
 
 ### 4.3 Redux: Session Slice
-- [ ] Обновить `sessionSlice.ts`:
+- [x] Обновить `sessionSlice.ts`:
   - State: currentPractice, isPlaying, progress, duration
   - Экшены: setSession, updateProgress, clearSession
   - Селекторы: selectCurrentSession, selectIsPlaying
 
 ### 4.4 UI компоненты медитации
-- [ ] Создать `src/components/meditation/ProgressRing.tsx`:
+- [x] Создать `src/components/meditation/ProgressRing.tsx`:
   - Круговой прогресс-бар
   - Анимация прогресса
-- [ ] Создать `src/components/meditation/PlayPauseButton.tsx`:
+- [x] Создать `src/components/meditation/PlayPauseButton.tsx`:
   - Кнопка play/pause
   - Анимация переключения
-- [ ] Создать `src/components/meditation/SessionTimer.tsx`:
+- [x] Создать `src/components/meditation/SessionTimer.tsx`:
   - Отображение текущего времени
   - Формат MM:SS
 
 ### 4.5 Экран медитации
-- [ ] Реализовать `app/(tabs)/meditation.tsx`:
+- [x] Реализовать `app/(tabs)/meditation.tsx`:
   - По умолчанию: показывать локальную дефолтную практику
   - Фоновое изображение практики
   - Название практики

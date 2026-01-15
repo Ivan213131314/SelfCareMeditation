@@ -20,8 +20,10 @@ export default function CatalogScreen() {
     } = useCatalog();
 
     const handlePracticePress = (id: string) => {
-        router.push('/(tabs)/meditation');
-        console.log('Selected practice:', id);
+        router.push({
+            pathname: '/(tabs)/meditation',
+            params: { practiceId: id }
+        });
     };
 
     return (
