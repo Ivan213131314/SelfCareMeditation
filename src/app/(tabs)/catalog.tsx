@@ -34,7 +34,10 @@ export default function CatalogScreen() {
                         <Text style={styles.greeting}>GOOD MORNING</Text>
                         <Text style={styles.title}>Discover Peace</Text>
                     </View>
-                    <TouchableOpacity style={styles.profileButton}>
+                    <TouchableOpacity
+                        style={styles.profileButton}
+                        onPress={() => router.push('/profile')}
+                    >
                         <Ionicons name="person-circle-outline" size={40} color={Colors.text} />
                     </TouchableOpacity>
                 </View>
